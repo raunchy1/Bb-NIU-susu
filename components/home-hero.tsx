@@ -5,21 +5,31 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { whatsappHref } from "@/lib/site";
-import heroImage from "@/public/images/hero/hero-facade.jpg";
+import { localeHref, type Locale } from "@/lib/i18n/config";
+import type { Dictionary } from "@/lib/i18n/dictionaries/en";
+import heroImage from "@/public/images/about/courtyard.jpg";
 
-export function HomeHero() {
+export function HomeHero({
+  locale,
+  t,
+  whatsappMessage,
+}: {
+  locale: Locale;
+  t: Dictionary["home"]["hero"];
+  whatsappMessage: string;
+}) {
   return (
     <section className="relative h-[100svh] min-h-[640px] w-full overflow-hidden">
       <Image
         src={heroImage}
-        alt="The stone arches of B&B Niu Susu at first light"
+        alt={t.imageAlt}
         fill
         priority
         placeholder="blur"
         sizes="100vw"
         className="object-cover"
       />
-      <div className="absolute inset-0 bg-foreground/25" />
+      <div className="absolute inset-0 bg-foreground/40" />
 
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center text-background">
         <motion.p
@@ -28,7 +38,7 @@ export function HomeHero() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="text-xs uppercase tracking-[0.35em] mb-6"
         >
-          Lanusei · Ogliastra · Sardinia
+          {t.eyebrow}
         </motion.p>
 
         <motion.h1
@@ -37,8 +47,9 @@ export function HomeHero() {
           transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
           className="font-serif text-4xl sm:text-5xl md:text-7xl leading-[1.08] text-balance max-w-4xl"
         >
-          More than a stay.
-          <br />A place to slow down.
+          {t.titleLine1}
+          <br />
+          {t.titleLine2}
         </motion.h1>
 
         <motion.div
@@ -48,15 +59,15 @@ export function HomeHero() {
           className="mt-10 flex flex-col sm:flex-row items-center gap-4"
         >
           <Button variant="accent" asChild>
-            <Link href="/contact">Book your stay</Link>
+            <Link href={localeHref(locale, "/contact")}>{t.bookButton}</Link>
           </Button>
           <Button
             variant="outline"
             asChild
             className="border-background/50 text-background hover:border-background hover:text-background hover:bg-background/10"
           >
-            <a href={whatsappHref} target="_blank" rel="noopener noreferrer">
-              WhatsApp
+            <a href={whatsappHref(whatsappMessage)} target="_blank" rel="noopener noreferrer">
+              {t.whatsappButton}
             </a>
           </Button>
         </motion.div>

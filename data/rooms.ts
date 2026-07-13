@@ -1,57 +1,39 @@
+export type AmenityKey =
+  | "privateBathroom"
+  | "airConditioning"
+  | "wifi"
+  | "breakfast"
+  | "coffeeMachine"
+  | "terrace";
+
 export type Room = {
   slug: string;
-  name: string;
   guests: number;
-  size: string;
-  description: string;
   image: string;
-  amenities: string[];
+  amenityKeys: AmenityKey[];
   hasTerrace: boolean;
 };
 
 export const rooms: Room[] = [
   {
-    slug: "nuraghe",
-    name: "Nuraghe Room",
-    guests: 2,
-    size: "22 m²",
-    description:
-      "Named after the ancient stone towers scattered across Ogliastra, this room keeps things quiet: thick walls, soft linen, a window framed on the ridgeline.",
-    image: "/images/rooms/room-nuraghe.jpg",
-    amenities: ["Private bathroom", "Air conditioning", "WiFi", "Breakfast", "Coffee machine"],
-    hasTerrace: false,
-  },
-  {
-    slug: "ortu",
-    name: "Ortu Room",
-    guests: 2,
-    size: "24 m²",
-    description:
-      "Ortu means garden. This room looks over the courtyard below, where morning light moves slowly across the stone and the air smells of rosemary.",
-    image: "/images/rooms/room-ortu.jpg",
-    amenities: ["Private bathroom", "Air conditioning", "WiFi", "Breakfast", "Coffee machine", "Terrace"],
-    hasTerrace: true,
-  },
-  {
-    slug: "lanterna",
-    name: "Lanterna Room",
+    slug: "camera-mia",
     guests: 3,
-    size: "26 m²",
-    description:
-      "A warmer room for slower evenings, with space enough for a small family or friends who don't mind sharing the same silence.",
-    image: "/images/rooms/room-lanterna.jpg",
-    amenities: ["Private bathroom", "Air conditioning", "WiFi", "Breakfast", "Coffee machine"],
+    image: "/images/rooms/camera-mia.jpg",
+    amenityKeys: ["privateBathroom", "airConditioning", "wifi", "breakfast", "coffeeMachine"],
     hasTerrace: false,
   },
   {
-    slug: "suite-gennargentu",
-    name: "Gennargentu Suite",
+    slug: "camera-michele",
     guests: 4,
-    size: "34 m²",
-    description:
-      "Our largest room, with a private terrace facing the mountains — the one to book when you want to disappear for a few days.",
-    image: "/images/rooms/room-suite.jpg",
-    amenities: ["Private bathroom", "Air conditioning", "WiFi", "Breakfast", "Coffee machine", "Terrace"],
-    hasTerrace: true,
+    image: "/images/rooms/camera-michele.jpg",
+    amenityKeys: ["privateBathroom", "airConditioning", "wifi", "breakfast", "coffeeMachine"],
+    hasTerrace: false,
+  },
+  {
+    slug: "camera-melissa",
+    guests: 2,
+    image: "/images/rooms/camera-melissa.jpg",
+    amenityKeys: ["privateBathroom", "airConditioning", "wifi", "breakfast", "coffeeMachine"],
+    hasTerrace: false,
   },
 ];

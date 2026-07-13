@@ -4,9 +4,14 @@ import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
-import type { GalleryImage } from "@/data/gallery";
+type GalleryDisplayImage = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+};
 
-export function GalleryGrid({ images }: { images: GalleryImage[] }) {
+export function GalleryGrid({ images }: { images: GalleryDisplayImage[] }) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const close = useCallback(() => setActiveIndex(null), []);

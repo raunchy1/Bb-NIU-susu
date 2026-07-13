@@ -187,21 +187,13 @@ const scenes = {
   },
 };
 
+// Note: about/courtyard.jpg, about/lanusei.jpg, breakfast/table.jpg and
+// rooms/camera-*.jpg have since been replaced with real property photos and
+// are intentionally NOT in this job list — re-running this script will not
+// overwrite them. Only the remaining placeholders below are still generated art.
 const jobs = [
-  ["hero/hero-facade.jpg", "arches", 1920, 1080],
-  ["hero/hero-terrace.jpg", "olive", 1920, 1080],
-  ["hero/hero-mountains.jpg", "mountains", 1920, 1080],
-
-  ["about/lanusei.jpg", "mountains", 1200, 1500],
-  ["about/courtyard.jpg", "arches", 1200, 900],
   ["about/detail.jpg", "thread", 900, 1100],
 
-  ["rooms/room-nuraghe.jpg", "room", 1200, 900],
-  ["rooms/room-ortu.jpg", "room", 1200, 900],
-  ["rooms/room-lanterna.jpg", "room", 1200, 900],
-  ["rooms/room-suite.jpg", "room", 1200, 900],
-
-  ["breakfast/table.jpg", "breakfast", 1600, 1000],
   ["breakfast/detail.jpg", "olive", 1100, 1400],
 
   ["experiences/sea.jpg", "horizon", 1200, 1500],

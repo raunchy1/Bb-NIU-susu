@@ -1,30 +1,54 @@
 import Link from "next/link";
-import { nav, site } from "@/lib/site";
+import Image from "next/image";
+import { navPaths, site } from "@/lib/site";
+import { localeHref, type Locale } from "@/lib/i18n/config";
+import type { Dictionary } from "@/lib/i18n/dictionaries/en";
+import logo from "@/public/images/logo/niu-susu-logo.webp";
 
-export function Footer() {
+export function Footer({
+  locale,
+  nav,
+  footer,
+}: {
+  locale: Locale;
+  nav: Dictionary["nav"];
+  footer: Dictionary["footer"];
+}) {
+  const navLabels: Record<(typeof navPaths)[number], string> = {
+    "/": nav.home,
+    "/about": nav.about,
+    "/rooms": nav.rooms,
+    "/gallery": nav.gallery,
+    "/experiences": nav.experiences,
+    "/breakfast": nav.breakfast,
+    "/location": nav.location,
+    "/contact": nav.contact,
+  };
+
   return (
     <footer className="border-t border-line mt-32">
       <div className="container-editorial py-16 grid gap-12 md:grid-cols-4">
         <div className="md:col-span-2">
-          <p className="font-serif text-2xl">Niu Susu</p>
+          <Image src={logo} alt="B&B Niu Susu" className="h-10 w-auto" />
           <p className="mt-4 text-secondary max-w-xs leading-relaxed">
-            A quiet address in {site.locality}, in the heart of {site.region},
-            Sardinia — where the day slows to the rhythm of the mountains.
+            {footer.tagline
+              .replace("{locality}", site.locality)
+              .replace("{region}", site.region)}
           </p>
         </div>
 
         <div>
           <p className="text-xs uppercase tracking-[0.15em] text-secondary mb-4">
-            Explore
+            {footer.explore}
           </p>
           <ul className="space-y-3">
-            {nav.slice(1).map((item) => (
-              <li key={item.href}>
+            {navPaths.slice(1).map((path) => (
+              <li key={path}>
                 <Link
-                  href={item.href}
+                  href={localeHref(locale, path)}
                   className="text-sm hover:text-accent transition-colors"
                 >
-                  {item.label}
+                  {navLabels[path]}
                 </Link>
               </li>
             ))}
@@ -33,7 +57,7 @@ export function Footer() {
 
         <div>
           <p className="text-xs uppercase tracking-[0.15em] text-secondary mb-4">
-            Contact
+            {footer.contact}
           </p>
           <ul className="space-y-3 text-sm">
             <li>
@@ -56,7 +80,7 @@ export function Footer() {
 
       <div className="container-editorial py-6 border-t border-line flex flex-col sm:flex-row gap-2 justify-between text-xs text-secondary">
         <p>
-          © {new Date().getFullYear()} {site.name}. All rights reserved.
+          © {new Date().getFullYear()} {site.name}. {footer.rights}
         </p>
         <p>{site.country}</p>
       </div>

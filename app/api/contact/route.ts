@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server";
-import { contactSchema } from "@/lib/schema";
+import { buildContactSchema } from "@/lib/schema";
+import en from "@/lib/i18n/dictionaries/en";
+
+const contactSchema = buildContactSchema(en.contact.form.validation);
 
 export async function POST(request: Request) {
   const body = await request.json();

@@ -1,17 +1,33 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { nav, site } from "@/lib/site";
+import { navPaths } from "@/lib/site";
+import { localeHref, type Locale } from "@/lib/i18n/config";
+import type { Dictionary } from "@/lib/i18n/dictionaries/en";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { LanguageSwitcher } from "@/components/language-switcher";
+import logo from "@/public/images/logo/niu-susu-logo.webp";
 
-export function Navbar() {
+export function Navbar({ locale, nav }: { locale: Locale; nav: Dictionary["nav"] }) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+
+  const navLabels: Record<(typeof navPaths)[number], string> = {
+    "/": nav.home,
+    "/about": nav.about,
+    "/rooms": nav.rooms,
+    "/gallery": nav.gallery,
+    "/experiences": nav.experiences,
+    "/breakfast": nav.breakfast,
+    "/location": nav.location,
+    "/contact": nav.contact,
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -29,37 +45,41 @@ export function Navbar() {
       className={cn(
         "fixed top-0 inset-x-0 z-50 transition-all duration-500",
         scrolled || open
-          ? "bg-background border-b border-line py-4"
-          : "bg-transparent py-6"
+          ? "bg-background border-b border-line py-3"
+          : "bg-transparent py-5"
       )}
     >
       <div className="container-editorial flex items-center justify-between">
         <Link
-          href="/"
-          className="font-serif text-xl tracking-wide"
-          aria-label={`${site.name} — home`}
+          href={localeHref(locale, "/")}
+          className="flex items-center gap-2"
+          aria-label="B&B Niu Susu — home"
         >
-          Niu Susu
+          <Image src={logo} alt="B&B Niu Susu" className="h-9 w-auto" priority />
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-9">
-          {nav.slice(1).map((item) => (
+        <nav className="hidden lg:flex items-center gap-8">
+          {navPaths.slice(1).map((path) => (
             <Link
-              key={item.href}
-              href={item.href}
+              key={path}
+              href={localeHref(locale, path)}
               className={cn(
                 "text-xs uppercase tracking-[0.15em] transition-colors hover:text-accent",
-                pathname === item.href ? "text-accent" : "text-foreground"
+                pathname === localeHref(locale, path) ? "text-accent" : "text-foreground"
               )}
             >
-              {item.label}
+              {navLabels[path]}
             </Link>
           ))}
         </nav>
 
-        <div className="hidden lg:block">
+        <div className="hidden lg:flex items-center gap-6">
+          <LanguageSwitcher
+            locale={locale}
+            className="text-xs uppercase tracking-[0.15em] hover:text-accent transition-colors"
+          />
           <Button variant="outline" asChild className="text-xs py-3 px-6">
-            <Link href="/contact">Book your stay</Link>
+            <Link href={localeHref(locale, "/contact")}>{nav.bookYourStay}</Link>
           </Button>
         </div>
 
@@ -74,17 +94,21 @@ export function Navbar() {
 
       {open && (
         <nav className="lg:hidden container-editorial mt-6 flex flex-col gap-5 pb-4">
-          {nav.slice(1).map((item) => (
+          {navPaths.slice(1).map((path) => (
             <Link
-              key={item.href}
-              href={item.href}
+              key={path}
+              href={localeHref(locale, path)}
               className="text-sm uppercase tracking-[0.15em]"
             >
-              {item.label}
+              {navLabels[path]}
             </Link>
           ))}
+          <LanguageSwitcher
+            locale={locale}
+            className="text-sm uppercase tracking-[0.15em] text-accent"
+          />
           <Button variant="outline" asChild className="mt-2 w-fit text-xs py-3 px-6">
-            <Link href="/contact">Book your stay</Link>
+            <Link href={localeHref(locale, "/contact")}>{nav.bookYourStay}</Link>
           </Button>
         </nav>
       )}

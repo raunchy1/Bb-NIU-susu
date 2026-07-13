@@ -4,25 +4,48 @@ import { Phone, Mail, MapPin } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import { ContactForm } from "@/components/contact-form";
 import { site, whatsappHref } from "@/lib/site";
+import { isLocale, type Locale } from "@/lib/i18n/config";
+import { getDictionary } from "@/lib/i18n/get-dictionary";
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description:
-    "Get in touch with B&B Niu Susu in Lanusei, Ogliastra — enquire about availability, rates and directions.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale: rawLocale } = await params;
+  const locale: Locale = isLocale(rawLocale) ? rawLocale : "it";
+  const dict = getDictionary(locale);
+  return {
+    title: dict.seo.pages.contact.title,
+    description: dict.seo.pages.contact.description,
+  };
+}
 
-export default function ContactPage() {
+export default async function ContactPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale: rawLocale } = await params;
+  const locale: Locale = isLocale(rawLocale) ? rawLocale : "it";
+  const dict = getDictionary(locale);
+  const t = dict.contact;
+
+  const roomNames = Object.fromEntries(
+    Object.entries(dict.rooms.items).map(([slug, room]) => [slug, room.name])
+  );
+
   return (
     <div className="pt-32 md:pt-40 pb-28">
       <section className="container-editorial">
         <Reveal>
           <p className="text-xs uppercase tracking-[0.25em] text-accent mb-4">
-            Contact
+            {t.eyebrow}
           </p>
         </Reveal>
         <Reveal delay={0.05}>
           <h1 className="font-serif text-4xl md:text-6xl leading-[1.1] max-w-3xl text-balance">
-            Tell us when, we&apos;ll take care of the rest.
+            {t.title}
           </h1>
         </Reveal>
       </section>
@@ -32,7 +55,7 @@ export default function ContactPage() {
           <div className="space-y-8">
             <div>
               <p className="text-xs uppercase tracking-[0.15em] text-secondary mb-2">
-                Call or WhatsApp
+                {t.callOrWhatsapp}
               </p>
               <a
                 href={site.phoneHref}
@@ -41,18 +64,18 @@ export default function ContactPage() {
                 <Phone size={17} /> {site.phoneDisplay}
               </a>
               <a
-                href={whatsappHref}
+                href={whatsappHref(dict.whatsapp.message)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-2 inline-block text-sm underline underline-offset-4 decoration-accent/50 hover:text-accent"
               >
-                Message us on WhatsApp
+                {t.messageWhatsapp}
               </a>
             </div>
 
             <div>
               <p className="text-xs uppercase tracking-[0.15em] text-secondary mb-2">
-                Email
+                {t.email}
               </p>
               <a
                 href={`mailto:${site.email}`}
@@ -64,7 +87,7 @@ export default function ContactPage() {
 
             <div>
               <p className="text-xs uppercase tracking-[0.15em] text-secondary mb-2">
-                Address
+                {t.address}
               </p>
               <p className="flex items-start gap-2 text-secondary leading-relaxed">
                 <MapPin size={17} className="mt-1 shrink-0" /> {site.addressLine}
@@ -75,7 +98,7 @@ export default function ContactPage() {
 
         <Reveal delay={0.1}>
           <Suspense fallback={null}>
-            <ContactForm />
+            <ContactForm t={t.form} roomNames={roomNames} />
           </Suspense>
         </Reveal>
       </section>

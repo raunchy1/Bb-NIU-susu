@@ -7,17 +7,18 @@ import {
   Trees,
   type LucideIcon,
 } from "lucide-react";
+import type { AmenityKey } from "@/data/rooms";
 
-const map: Record<string, LucideIcon> = {
-  "Private bathroom": BedDouble,
-  "Air conditioning": Wind,
-  WiFi: Wifi,
-  Breakfast: Croissant,
-  "Coffee machine": Coffee,
-  Terrace: Trees,
+const map: Record<AmenityKey, LucideIcon> = {
+  privateBathroom: BedDouble,
+  airConditioning: Wind,
+  wifi: Wifi,
+  breakfast: Croissant,
+  coffeeMachine: Coffee,
+  terrace: Trees,
 };
 
-export function AmenityIcon({ amenity }: { amenity: string }) {
-  const Icon = map[amenity] ?? Wifi;
+export function AmenityIcon({ amenityKey }: { amenityKey: AmenityKey }) {
+  const Icon = map[amenityKey];
   return <Icon size={15} strokeWidth={1.5} />;
 }
