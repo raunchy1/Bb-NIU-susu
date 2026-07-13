@@ -1,6 +1,6 @@
-import Image from "next/image";
 import type { Metadata } from "next";
 import { Reveal } from "@/components/reveal";
+import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { experiences } from "@/data/experiences";
 import { isLocale, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
@@ -59,15 +59,7 @@ export default async function ExperiencesPage({
                 }`}
               >
                 <Reveal>
-                  <div className="relative aspect-[4/3]">
-                    <Image
-                      src={exp.image}
-                      alt={expT.title}
-                      fill
-                      sizes="(min-width: 768px) 45vw, 90vw"
-                      className="object-cover"
-                    />
-                  </div>
+                  <PhotoPlaceholder className="aspect-[4/3]" />
                 </Reveal>
                 <div>
                   <Reveal>

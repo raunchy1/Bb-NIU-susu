@@ -64,7 +64,7 @@ const en = {
       experiences: {
         title: "Experiences",
         description:
-          "Discover Ogliastra from B&B Niu Susu — the Ionian sea, the Gennargentu mountains, hiking trails, Domus de Janas, the Maria Lai museum and local restaurants.",
+          "Discover Ogliastra from B&B Niu Susu — the Tyrrhenian sea, the Gennargentu mountains, hiking trails, Domus de Janas, the Maria Lai museum and local restaurants.",
       },
       gallery: {
         title: "Gallery",
@@ -86,7 +86,7 @@ const en = {
       {
         question: "Where is B&B Niu Susu located?",
         answer:
-          "B&B Niu Susu is in Lanusei, in the Ogliastra region of eastern Sardinia, between the Gennargentu mountains and the Ionian coast.",
+          "B&B Niu Susu is in Lanusei, in the Ogliastra region of eastern Sardinia, between the Gennargentu mountains and the Tyrrhenian coast.",
       },
       {
         question: "Is breakfast included?",
@@ -119,7 +119,7 @@ const en = {
       titleBefore: "A home run the way Ogliastra has always welcomed guests —",
       titleAccent: " with warmth, with care,",
       titleAfter: " with a table always set for one more.",
-      body: "Niu Susu sits in the heart of Lanusei, where the granite of the Gennargentu meets the first light off the Ionian Sea. Ilenia and her family didn't set out to build a hotel. They opened their own home — three rooms, a shared kitchen, a terrace — to travellers who want the same thing they do: fewer things, done properly.",
+      body: "Niu Susu sits in the heart of Lanusei, where the granite of the Gennargentu meets the first light off the Tyrrhenian Sea. Ilenia and her family didn't set out to build a hotel. They opened their own home — three rooms, a shared kitchen, a terrace — to travellers who want the same thing they do: fewer things, done properly.",
       cta: "Our story →",
       imageAlt: "The terrace at B&B Niu Susu, Lanusei",
     },
@@ -236,7 +236,7 @@ const en = {
     items: {
       sea: {
         tag: "Sea",
-        title: "The Ionian coast",
+        title: "The Tyrrhenian coast",
         description:
           "Twenty-five minutes from Lanusei, the coast of Ogliastra opens into coves of granite and impossibly clear water — Cea, Orrì, Santa Maria Navarrese. Quieter than the north of the island, and more honest for it.",
       },

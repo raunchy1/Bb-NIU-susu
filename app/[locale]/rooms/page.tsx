@@ -1,10 +1,10 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { Users } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import { Button } from "@/components/ui/button";
 import { AmenityIcon } from "@/components/amenity-icon";
+import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { rooms } from "@/data/rooms";
 import { isLocale, localeHref, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
@@ -59,15 +59,7 @@ export default async function RoomsPage({
           return (
             <Reveal key={room.slug} delay={(i % 2) * 0.1}>
               <article className="group">
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <Image
-                    src={room.image}
-                    alt={`${roomT.name} — B&B Niu Susu, Lanusei`}
-                    fill
-                    sizes="(min-width: 768px) 45vw, 90vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
+                <PhotoPlaceholder className="aspect-[4/3]" />
 
                 <div className="mt-6 flex items-start justify-between gap-4">
                   <div>

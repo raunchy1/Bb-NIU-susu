@@ -66,7 +66,7 @@ const it: Dictionary = {
       experiences: {
         title: "Esperienze",
         description:
-          "Scopri l'Ogliastra a partire dal B&B Niu Susu — il mare Ionio, le montagne del Gennargentu, sentieri escursionistici, le Domus de Janas, il museo di Maria Lai e i ristoranti locali.",
+          "Scopri l'Ogliastra a partire dal B&B Niu Susu — il Mar Tirreno, le montagne del Gennargentu, sentieri escursionistici, le Domus de Janas, il museo di Maria Lai e i ristoranti locali.",
       },
       gallery: {
         title: "Galleria",
@@ -88,7 +88,7 @@ const it: Dictionary = {
       {
         question: "Dove si trova il B&B Niu Susu?",
         answer:
-          "Il B&B Niu Susu si trova a Lanusei, nella regione dell'Ogliastra, nella Sardegna orientale, tra le montagne del Gennargentu e la costa ionica.",
+          "Il B&B Niu Susu si trova a Lanusei, nella regione dell'Ogliastra, nella Sardegna orientale, tra le montagne del Gennargentu e la costa tirrenica.",
       },
       {
         question: "La colazione è inclusa?",
@@ -121,7 +121,7 @@ const it: Dictionary = {
       titleBefore: "Una casa che accoglie come l'Ogliastra ha sempre accolto i suoi ospiti —",
       titleAccent: " con calore, con cura,",
       titleAfter: " con un posto a tavola sempre pronto per uno in più.",
-      body: "Niu Susu si trova nel cuore di Lanusei, dove il granito del Gennargentu incontra la prima luce del mare Ionio. Ilenia e la sua famiglia non volevano aprire un hotel. Hanno aperto la propria casa — tre camere, una cucina condivisa, una terrazza — a chi viaggia cercando la stessa cosa che cercano loro: poche cose, fatte bene.",
+      body: "Niu Susu si trova nel cuore di Lanusei, dove il granito del Gennargentu incontra la prima luce del Mar Tirreno. Ilenia e la sua famiglia non volevano aprire un hotel. Hanno aperto la propria casa — tre camere, una cucina condivisa, una terrazza — a chi viaggia cercando la stessa cosa che cercano loro: poche cose, fatte bene.",
       cta: "La nostra storia →",
       imageAlt: "La terrazza del B&B Niu Susu, Lanusei",
     },
@@ -238,7 +238,7 @@ const it: Dictionary = {
     items: {
       sea: {
         tag: "Mare",
-        title: "La costa ionica",
+        title: "La costa tirrenica",
         description:
           "A venticinque minuti da Lanusei, la costa dell'Ogliastra si apre in insenature di granito e acque incredibilmente limpide — Cea, Orrì, Santa Maria Navarrese. Più silenziosa del nord dell'isola, e più autentica proprio per questo.",
       },

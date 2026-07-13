@@ -1,11 +1,8 @@
-import Image from "next/image";
 import type { Metadata } from "next";
 import { Reveal } from "@/components/reveal";
+import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { isLocale, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
-import lanuseiImage from "@/public/images/about/lanusei.jpg";
-import courtyardImage from "@/public/images/about/courtyard.jpg";
-import detailImage from "@/public/images/about/detail.jpg";
 
 export async function generateMetadata({
   params,
@@ -51,31 +48,13 @@ export default async function AboutPage({
           <p className="mt-6 text-secondary leading-relaxed text-lg">{t.intro2}</p>
         </Reveal>
         <Reveal delay={0.1}>
-          <div className="relative aspect-[4/5]">
-            <Image
-              src={courtyardImage}
-              alt={t.courtyardAlt}
-              fill
-              placeholder="blur"
-              sizes="(min-width: 768px) 40vw, 90vw"
-              className="object-cover"
-            />
-          </div>
+          <PhotoPlaceholder className="aspect-[4/5]" />
         </Reveal>
       </section>
 
       <section className="container-editorial mt-32 grid md:grid-cols-2 gap-16 items-center">
         <Reveal className="order-2 md:order-1">
-          <div className="relative aspect-[4/5]">
-            <Image
-              src={lanuseiImage}
-              alt={t.lanuseiAlt}
-              fill
-              placeholder="blur"
-              sizes="(min-width: 768px) 40vw, 90vw"
-              className="object-cover"
-            />
-          </div>
+          <PhotoPlaceholder className="aspect-[4/5]" />
         </Reveal>
         <div className="order-1 md:order-2">
           <Reveal>
@@ -95,16 +74,7 @@ export default async function AboutPage({
       <section className="container-editorial mt-32 mb-32">
         <Reveal>
           <div className="grid md:grid-cols-[1fr_1.2fr] gap-16 items-center">
-            <div className="relative aspect-[3/4]">
-              <Image
-                src={detailImage}
-                alt={t.detailAlt}
-                fill
-                placeholder="blur"
-                sizes="(min-width: 768px) 35vw, 90vw"
-                className="object-cover"
-              />
-            </div>
+            <PhotoPlaceholder className="aspect-[3/4]" />
             <div>
               <h2 className="font-serif text-3xl md:text-4xl leading-[1.15] text-balance">
                 {t.hospitalityHeading}

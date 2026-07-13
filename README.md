@@ -25,15 +25,25 @@ depending on browser language / a previously chosen `NEXT_LOCALE` cookie.
 - The language switcher (`components/language-switcher.tsx`) swaps the locale segment
   of the current path and sets the `NEXT_LOCALE` cookie.
 
-## Real photography vs. placeholder art
+## Photos
 
-Some images are real property photos (rooms, entrance, terrace, kitchen — supplied by
-the owner); a few (`about/detail.jpg`, `breakfast/detail.jpg`, `og/og-image.jpg`,
-gallery filler images) are still generated editorial line-art placeholders from
-`scripts/generate-placeholders.mjs`, since no real photo was available yet for those
-slots. Replace any remaining placeholder by dropping a same-named file into
-`public/images/<section>/` — the generator script only touches files still listed in
-its own `jobs` array, so it's safe to leave in place.
+There are currently no property photos in the site — every photo slot renders
+`<PhotoPlaceholder />` (`components/photo-placeholder.tsx`), a plain bordered box
+that preserves the intended aspect ratio. This is intentional: the owner will add
+real photography after approving the design.
+
+To bring photos back for a slot:
+
+1. Drop the image into `public/images/<section>/<name>.jpg`.
+2. Replace the corresponding `<PhotoPlaceholder className="aspect-[...]" />` with a
+   `next/image` `<Image fill .../>` inside a `relative` wrapper with the same aspect
+   class (see git history before the "remove all photos" commit for the exact pattern
+   used previously in `app/[locale]/**/page.tsx`, `components/home-hero.tsx` and
+   `components/gallery-grid.tsx`).
+
+`data/rooms.ts`, `data/experiences.ts` and `data/gallery.ts` already carry the intended
+file paths (e.g. `/images/rooms/camera-mia.jpg`) even though nothing is mounted there
+yet, so filenames are pre-agreed once real photos are ready.
 
 ## Content data
 

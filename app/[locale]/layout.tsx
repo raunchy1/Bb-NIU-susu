@@ -56,15 +56,13 @@ export async function generateMetadata({
       description: dict.seo.ogDescription,
       url: `${site.url}/${locale}`,
       siteName: site.name,
-      images: [{ url: "/images/og/og-image.jpg", width: 1200, height: 630 }],
       locale: dict.meta.localeTag,
       type: "website",
     },
     twitter: {
-      card: "summary_large_image",
+      card: "summary",
       title: dict.seo.ogTitle,
       description: dict.seo.ogDescription,
-      images: ["/images/og/og-image.jpg"],
     },
     alternates: {
       canonical: `${site.url}/${locale}`,
@@ -114,7 +112,6 @@ export default async function LocaleLayout({
       latitude: site.latitude,
       longitude: site.longitude,
     },
-    image: [`${site.url}/images/about/courtyard.jpg`],
     amenityFeature: [
       { "@type": "LocationFeatureSpecification", name: "Free WiFi", value: true },
       { "@type": "LocationFeatureSpecification", name: "Air conditioning", value: true },

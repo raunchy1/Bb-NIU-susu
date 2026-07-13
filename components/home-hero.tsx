@@ -1,13 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { whatsappHref } from "@/lib/site";
 import { localeHref, type Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries/en";
-import heroImage from "@/public/images/about/courtyard.jpg";
 
 export function HomeHero({
   locale,
@@ -19,18 +17,7 @@ export function HomeHero({
   whatsappMessage: string;
 }) {
   return (
-    <section className="relative h-[100svh] min-h-[640px] w-full overflow-hidden">
-      <Image
-        src={heroImage}
-        alt={t.imageAlt}
-        fill
-        priority
-        placeholder="blur"
-        sizes="100vw"
-        className="object-cover"
-      />
-      <div className="absolute inset-0 bg-foreground/40" />
-
+    <section className="relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-foreground">
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center text-background">
         <motion.p
           initial={{ opacity: 0, y: 12 }}

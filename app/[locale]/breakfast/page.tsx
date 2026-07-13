@@ -1,10 +1,8 @@
-import Image from "next/image";
 import type { Metadata } from "next";
 import { Reveal } from "@/components/reveal";
+import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { isLocale, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
-import tableImage from "@/public/images/breakfast/table.jpg";
-import detailImage from "@/public/images/breakfast/detail.jpg";
 
 export async function generateMetadata({
   params,
@@ -44,18 +42,9 @@ export default async function BreakfastPage({
         </Reveal>
       </section>
 
-      <section className="mt-16 relative aspect-[16/9] md:aspect-[21/9]">
+      <section className="mt-16 container-editorial">
         <Reveal>
-          <div className="relative w-full aspect-[16/9] md:aspect-[21/9]">
-            <Image
-              src={tableImage}
-              alt={t.heroAlt}
-              fill
-              placeholder="blur"
-              sizes="100vw"
-              className="object-cover"
-            />
-          </div>
+          <PhotoPlaceholder className="aspect-[16/9] md:aspect-[21/9] w-full" />
         </Reveal>
       </section>
 
@@ -74,16 +63,7 @@ export default async function BreakfastPage({
           </Reveal>
         </div>
         <Reveal delay={0.15}>
-          <div className="relative aspect-[3/4]">
-            <Image
-              src={detailImage}
-              alt={t.detailAlt}
-              fill
-              placeholder="blur"
-              sizes="(min-width: 768px) 40vw, 90vw"
-              className="object-cover"
-            />
-          </div>
+          <PhotoPlaceholder className="aspect-[3/4]" />
         </Reveal>
       </section>
 

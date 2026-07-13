@@ -1,16 +1,14 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { HomeHero } from "@/components/home-hero";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { Button } from "@/components/ui/button";
+import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { rooms } from "@/data/rooms";
 import { experiences } from "@/data/experiences";
 import { isLocale, localeHref, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
-import courtyardImage from "@/public/images/about/courtyard.jpg";
-import breakfastImage from "@/public/images/breakfast/table.jpg";
 
 export async function generateMetadata({
   params,
@@ -44,16 +42,7 @@ export default async function HomePage({
       <section className="container-editorial py-28 md:py-36">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <Reveal>
-            <div className="relative aspect-[4/5]">
-              <Image
-                src={courtyardImage}
-                alt={t.welcome.imageAlt}
-                fill
-                placeholder="blur"
-                sizes="(min-width: 768px) 40vw, 90vw"
-                className="object-cover"
-              />
-            </div>
+            <PhotoPlaceholder className="aspect-[4/5]" />
           </Reveal>
           <div>
             <Reveal>
@@ -93,15 +82,7 @@ export default async function HomePage({
             {rooms.map((room, i) => (
               <Reveal key={room.slug} delay={i * 0.08}>
                 <Link href={localeHref(locale, "/rooms")} className="group block">
-                  <div className="relative aspect-[4/5] overflow-hidden">
-                    <Image
-                      src={room.image}
-                      alt={`${dict.rooms.items[room.slug as keyof typeof dict.rooms.items].name} — B&B Niu Susu`}
-                      fill
-                      sizes="(min-width: 1024px) 32vw, (min-width: 640px) 45vw, 90vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                  </div>
+                  <PhotoPlaceholder className="aspect-[4/5]" />
                   <p className="mt-4 font-serif text-xl">
                     {dict.rooms.items[room.slug as keyof typeof dict.rooms.items].name}
                   </p>
@@ -140,16 +121,7 @@ export default async function HomePage({
             </Button>
           </div>
           <Reveal className="order-1 md:order-2">
-            <div className="relative aspect-[4/3]">
-              <Image
-                src={breakfastImage}
-                alt={t.breakfast.imageAlt}
-                fill
-                placeholder="blur"
-                sizes="(min-width: 768px) 40vw, 90vw"
-                className="object-cover"
-              />
-            </div>
+            <PhotoPlaceholder className="aspect-[4/3]" />
           </Reveal>
         </div>
       </section>
@@ -168,15 +140,7 @@ export default async function HomePage({
               return (
                 <Reveal key={exp.slug} delay={i * 0.08}>
                   <Link href={localeHref(locale, "/experiences")} className="group block">
-                    <div className="relative aspect-[3/4] overflow-hidden">
-                      <Image
-                        src={exp.image}
-                        alt={expT.title}
-                        fill
-                        sizes="(min-width: 1024px) 32vw, (min-width: 640px) 45vw, 90vw"
-                        className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      />
-                    </div>
+                    <PhotoPlaceholder className="aspect-[3/4]" />
                     <p className="mt-4 text-xs uppercase tracking-[0.15em] text-accent">
                       {expT.tag}
                     </p>

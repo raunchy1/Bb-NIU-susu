@@ -26,14 +26,11 @@ export default async function GalleryPage({
 }) {
   const { locale: rawLocale } = await params;
   const locale: Locale = isLocale(rawLocale) ? rawLocale : "it";
-  const dict = getDictionary(locale);
-  const t = dict.gallery;
+  const t = getDictionary(locale).gallery;
 
   const images = galleryImages.map((img) => ({
-    src: img.src,
     width: img.width,
     height: img.height,
-    alt: t.alts[img.id as keyof typeof t.alts],
   }));
 
   return (
