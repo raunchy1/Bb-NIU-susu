@@ -55,7 +55,7 @@ export function Navbar({ locale, nav }: { locale: Locale; nav: Dictionary["nav"]
           className="flex items-center gap-2"
           aria-label="B&B Niu Susu — home"
         >
-          <Image src={logo} alt="B&B Niu Susu" className="h-9 w-auto" priority />
+          <Image src={logo} alt="B&B Niu Susu" className="h-14 w-auto" priority />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-8">

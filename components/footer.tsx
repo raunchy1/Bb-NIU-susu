@@ -29,7 +29,7 @@ export function Footer({
     <footer className="border-t border-line mt-32">
       <div className="container-editorial py-16 grid gap-12 md:grid-cols-4">
         <div className="md:col-span-2">
-          <Image src={logo} alt="B&B Niu Susu" className="h-10 w-auto" />
+          <Image src={logo} alt="B&B Niu Susu" className="h-16 w-auto" />
           <p className="mt-4 text-secondary max-w-xs leading-relaxed">
             {footer.tagline
               .replace("{locality}", site.locality)
